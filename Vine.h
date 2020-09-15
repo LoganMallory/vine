@@ -56,23 +56,23 @@ public:
   void operator+= (const dtype v);
   void operator+= (const Vine<dtype>& vec);
     //subtraction
-  Vine<dtype>& operator- (const dtype v) const;
-  Vine<dtype>& operator- (const Vine<dtype>& vec) const;
+  Vine<dtype> operator- (const dtype v) const;
+  Vine<dtype> operator- (const Vine<dtype>& vec) const;
   void operator-= (const dtype v);
   void operator-= (const Vine<dtype>& vec);
     //multiplication
-  Vine<dtype>& operator* (const dtype v) const;
-  Vine<dtype>& operator* (const Vine<dtype>& vec) const;
+  Vine<dtype> operator* (const dtype v) const;
+  Vine<dtype> operator* (const Vine<dtype>& vec) const;
   void operator*= (const dtype v);
   void operator*= (const Vine<dtype>& vec);
     //division
-  Vine<dtype>& operator/ (const dtype v) const;
-  Vine<dtype>& operator/ (const Vine<dtype>& vec) const;
+  Vine<dtype> operator/ (const dtype v) const;
+  Vine<dtype> operator/ (const Vine<dtype>& vec) const;
   void operator/= (const dtype v);
   void operator/= (const Vine<dtype>& vec);
     //xor
-  Vine<dtype>& operator^ (const dtype v) const;
-  Vine<dtype>& operator^ (const Vine<dtype>& vec) const;
+  Vine<dtype> operator^ (const dtype v) const;
+  Vine<dtype> operator^ (const Vine<dtype>& vec) const;
   void operator^= (const dtype v);
   void operator^= (const Vine<dtype>& vec);
 
