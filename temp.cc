@@ -1,22 +1,14 @@
 const int DEBUG   = 1;
-const OPT_LVL = 0;
+const int OPT_LVL = 0;
 #include "Vine.h"
 
-Vine<int> make_vine() {
-  Vine<int> vec(5, 10); //value 5, length 10
-  printf("vec.length = %u\nvec.values[0] = %d\n", vec.length, vec.values[0]);
-  return vec;
-}
-
-void make_edit(Vine<int>& vec) {
-  vec[0] = 91;
-}
-
 int main() {
-  Vine<int> myvine = make_vine();
-  printf("myvine.values[0] = %d\n", myvine.values[0]);
-  make_edit(myvine);
-  printf("myvine.values[0] = %d\n", myvine.values[0]);
+  Vine<int> vec1(5, 10);
+  vec1.print();
+
+  Vine<int> vec2 = vec1 + 1;
+  vec2.print();
+
   return 0;
 }
 /*

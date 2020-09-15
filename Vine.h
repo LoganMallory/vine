@@ -51,7 +51,7 @@ public:
   Vine<bool>& operator<= (const Vine<dtype>& vec) const;
 
     //addition
-  Vine<dtype>& operator+ (const dtype v) const;
+  Vine<dtype> operator+ (const dtype v) const;
   Vine<dtype>& operator+ (const Vine<dtype>& vec) const;
   void operator+= (const dtype v);
   void operator+= (const Vine<dtype>& vec);

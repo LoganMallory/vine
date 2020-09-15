@@ -1,29 +1,29 @@
 template<typename dtype>
-Vine<dtype>& Vine<dtype>::operator+ (const dtype v) const {
+Vine<dtype> Vine<dtype>::operator+ (const dtype v) const {
   /*
   Add the constant v to every element in this->values and return in a new Vine object
   */
   if(DEBUG) printf("Vine::operator+ (const dtype v)\n");
-  Vine<dtype>* newvec = new Vine<dtype>(this->length);
+  Vine<dtype> newvec(this->length);
   dtype* this_vals_ptr;
   dtype* new_vals_ptr;
   switch (OPT_LVL) {
     case 0:
-      for(unsigned int i=0; i < this->length; i++) newvec->values[i] = this->values[i] + v;
+      for(unsigned int i=0; i < this->length; i++) newvec.values[i] = this->values[i] + v;
       break;
     case 1:
       this_vals_ptr = this->values;
-      new_vals_ptr  = newvec->values;
+      new_vals_ptr  = newvec.values;
       for(unsigned int i=0; i < this->length; i++) *new_vals_ptr++ = *this_vals_ptr++ + v;
       break;
     case 2:
       this_vals_ptr  = this->values;
-      new_vals_ptr   = newvec->values;
+      new_vals_ptr   = newvec.values;
       dtype* max_ptr = this_vals_ptr + this->length;
       while(this_vals_ptr < max_ptr) *new_vals_ptr++ = *this_vals_ptr++ + v;
       break;
   }
-  return *newvec;
+  return newvec;
 }
 template<typename dtype>
 Vine<dtype>& Vine<dtype>::operator+ (const Vine<dtype>& vec) const {
