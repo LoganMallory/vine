@@ -25,7 +25,7 @@ void overflow_handler(int sig) {
 }
 int main(){
   signal(SIGILL, &overflow_handler);
-  unsigned int size = 1000; //size >= 2
+  unsigned int size = 1000; //size >= 1
 
   test_constructor(size);
   test_destructor(size);

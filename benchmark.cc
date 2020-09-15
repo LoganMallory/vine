@@ -6,12 +6,12 @@ const int MIN = -10000000;
 const int MAX = 10000000;
 const unsigned int SIZE       = 500000;
 const unsigned int ITERATIONS = 1000;
-#include "benchmarks/vine/assignment.cc"
-#include "benchmarks/vine/indexing.cc"
-#include "benchmarks/vine/equality.cc"
-#include "benchmarks/vine/greaterthan.cc"
-#include "benchmarks/vine/lessthan.cc"
-#include "benchmarks/vine/addition.cc"
+#include "benchmarks/assignment.cc"
+#include "benchmarks/indexing.cc"
+#include "benchmarks/equality.cc"
+#include "benchmarks/greaterthan.cc"
+#include "benchmarks/lessthan.cc"
+#include "benchmarks/addition.cc"
 
 void benchmark(double (*func)()) {
   for(int i=0; i < 3; i++) {

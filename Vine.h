@@ -2,7 +2,6 @@
 #define Vine_H
 #include <stdio.h>
 #include <string>
-int DEBUG = 1;
 
 template<typename dtype>
 class Vine {
