@@ -2,6 +2,7 @@ const int DEBUG   = 1;
 const int OPT_LVL = 0;
 #include "Vine.h"
 
+//this program shows how the copy constructor is not called, which means the compiler is using RVO
 int main() {
   Vine<int> vec1(5, 10);
   vec1.print();
@@ -12,20 +13,12 @@ int main() {
   return 0;
 }
 /*
-A common flow is:
+TODO:
   Vine<int> vec2 = vec1 + v;
-  vec1+v invokes operator+
-  operator+ creates new Vine newvec*, returns dereferenced obejct (*newvec)
-  conversion constructor for vec2 is called (with newvec as arg)
-  values from newvec are copied into vec2.values
+  returns newvec using return value optimization (RVO - avoids copy constuctor, does work at address of vec2)
+  this is compiler dependent however, and in the case that the compiler decides not to use RVO,
+  newvec will be copied and then destructed upon return, thus deleting the values array that vec2 thinks still exists.
+  How can this be addressed?
 
-  the question: is newvec and newvec.values ever deleted (and memory freed)?
-  if not, then vine conversion constructor would have to consume and destroy vine arg
-
-TODO: Vine<int> vec2 = vec1   should become    Vine<int> vec2 = vec1[];                                                 //Vine(const Vine<dtype>& vec)
-
-TODO: vec2 = vec1 + 9         should become    now consume newvec (point to its values, set its values pointer to null) //operator=
 TODO: make Vine(unsigned int/int) explicit so that Vine<int> vec = 5 is a compiler error
-
-TODO: it is illegal to use realloc on an array created by new
 */

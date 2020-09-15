@@ -15,8 +15,6 @@ const int TEST_DEBUG = 1;
 #include "tests/multiplication.cc"
 #include "tests/division.cc"
 
-//TODO: check that address of this->values changes when new object is returned in some operators
-//TODO: assert that errors are thrown when doing math on two Vines of different dimensions
 
 //handle overflow -- only called if compiled using -ftrapv
 void overflow_handler(int sig) {
@@ -32,13 +30,13 @@ int main(){
   test_destructor(size);
   test_assignment(size);
   test_indexing(size);
+  test_equality(size);
   test_greater_than(size);
   test_less_than(size);
   test_addition(size);
   test_subtraction(size);
   test_multiplication(size);
   test_division(size);
-  test_equality(size);
 
 
   return 0;
