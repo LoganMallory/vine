@@ -91,3 +91,5 @@ int main() {
   benchmark(benchmark_add_vine_inplace);
   return 0;
 }
+
+//TODO: benchmarks that include `vec2 = vec1 + v;` or something similar are benchmarking the addition operator+ but also the assignent operator=, which differs based on OPTLVL

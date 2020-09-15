@@ -32,27 +32,27 @@ public:
   Vine<dtype>& operator[] (const Vine<bool>& indexes);               //setting
 
     //comparisons
-  Vine<bool>& operator== (const dtype v) const;
-  Vine<bool>& operator== (const Vine<dtype>& vec) const;
+  Vine<bool> operator== (const dtype v) const;
+  Vine<bool> operator== (const Vine<dtype>& vec) const;
 
-  Vine<bool>& operator!= (const dtype v) const;
-  Vine<bool>& operator!= (const Vine<dtype>& vec) const;
+  Vine<bool> operator!= (const dtype v) const;
+  Vine<bool> operator!= (const Vine<dtype>& vec) const;
 
-  Vine<bool>& operator> (const dtype v) const;
-  Vine<bool>& operator> (const Vine<dtype>& vec) const;
+  Vine<bool> operator> (const dtype v) const;
+  Vine<bool> operator> (const Vine<dtype>& vec) const;
 
-  Vine<bool>& operator>= (const dtype v) const;
-  Vine<bool>& operator>= (const Vine<dtype>& vec) const;
+  Vine<bool> operator>= (const dtype v) const;
+  Vine<bool> operator>= (const Vine<dtype>& vec) const;
 
-  Vine<bool>& operator< (const dtype v) const;
-  Vine<bool>& operator< (const Vine<dtype>& vec) const;
+  Vine<bool> operator< (const dtype v) const;
+  Vine<bool> operator< (const Vine<dtype>& vec) const;
 
-  Vine<bool>& operator<= (const dtype v) const;
-  Vine<bool>& operator<= (const Vine<dtype>& vec) const;
+  Vine<bool> operator<= (const dtype v) const;
+  Vine<bool> operator<= (const Vine<dtype>& vec) const;
 
     //addition
   Vine<dtype> operator+ (const dtype v) const;
-  Vine<dtype>& operator+ (const Vine<dtype>& vec) const;
+  Vine<dtype> operator+ (const Vine<dtype>& vec) const;
   void operator+= (const dtype v);
   void operator+= (const Vine<dtype>& vec);
     //subtraction
