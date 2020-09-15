@@ -1,5 +1,5 @@
-int OPT_LVL = 0;
-int DEBUG   = 1;
+const int DEBUG   = 1;
+const OPT_LVL = 0;
 #include "Vine.h"
 
 Vine<int> make_vine() {

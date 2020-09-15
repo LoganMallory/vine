@@ -1,3 +1,4 @@
+const int DEBUG = 0;
 int OPT_LVL;
 #include "Vine.h"
 #include <cstdlib>

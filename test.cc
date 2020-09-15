@@ -1,3 +1,4 @@
+const int DEBUG      = 1;
 const int OPT_LVL    = 0;
 const int TEST_DEBUG = 1;
 #include "Vine.h"
