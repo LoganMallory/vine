@@ -22,7 +22,7 @@ public:
   //operators
     //assignment
   void operator= (const dtype v);
-  Vine<dtype>& operator= (const Vine<dtype>& vec);
+  void operator= (const Vine<dtype>& vec);
     //indexers
   dtype operator[] (const unsigned int i) const; //getting
   dtype& operator[] (const unsigned int i);      //setting
