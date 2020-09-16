@@ -36,9 +36,17 @@ dtype& Vine<dtype>::operator[] (const unsigned int i) {
   }
   return this->values[0];
 }
-/*
-Vine<dtype> operator[] (const Vine<unsigned int>& indexes) const; //getting
+
+template<typename dtype>
+Vine<dtype> operator[] (const Vine<unsigned int>& indexes) const {
+  
+}
+
+template<typename dtype>
 Vine<dtype> operator[] (const Vine<unsigned int>& indexes);       //setting
+
+template<typename dtype>
 Vine<dtype> operator[] (const Vine<bool>& indexes) const;         //getting
+
+template<typename dtype>
 Vine<dtype> operator[] (const Vine<bool>& indexes);               //setting
-*/

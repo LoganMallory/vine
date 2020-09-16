@@ -15,6 +15,17 @@ TODO:
   -- ++   operator
 
 */
+
+template<typename dtype>
+class RefArray {
+public:
+  unsigned int length;
+  dtype** refs;
+
+  void operator= (const dtype v);
+  void operator= (const Vine<dtype>& vec);
+}
+
 template<typename dtype>
 class Vine {
 private:
