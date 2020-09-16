@@ -2,7 +2,19 @@
 #define Vine_H
 #include <stdio.h>
 #include <string>
+/*
+TODO:
+  % %=    operator
+  ^ ^=    operator
+  & &= && operator (&& loses short circuit eval when overloaded, prob shouldn't implement)
+  | |= || operator (|| loses short circuit eval when overloaded, prob shouldn't implement)
+  ~       operator
+  !       operator
+  >> >>=  operator
+  << <<=  operator
+  -- ++   operator
 
+*/
 template<typename dtype>
 class Vine {
 private:
