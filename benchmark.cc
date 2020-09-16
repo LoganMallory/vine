@@ -16,6 +16,7 @@ const unsigned int ITERATIONS = 1000;
 #include "benchmarks/lessthan.cc"
 #include "benchmarks/addition.cc"
 #include "benchmarks/subtraction.cc"
+#include "benchmarks/multiplication.cc"
 
 void benchmark(double (*func)()) {
   for(int i=0; i < 3; i++) {
@@ -122,7 +123,22 @@ int main() {
 
   printf("Vine -= Vine\n");
   benchmark(benchmark_subtract_vine_inplace);
+
+  //multiplication
+  printf("Vine - constant\n");
+  benchmark(benchmark_multiply_constant);
+
+  printf("Vine - Vine\n");
+  benchmark(benchmark_multiply_vine);
+
+  printf("Vine -= constant\n");
+  benchmark(benchmark_multiply_constant_inplace);
+
+  printf("Vine -= Vine\n");
+  benchmark(benchmark_multiply_vine_inplace);
   return 0;
 }
 
 //TODO: benchmarks that include `vec2 = vec1 + v;` or something similar are benchmarking the addition operator+ but also the assignent operator=, which differs based on OPTLVL
+//TODO: the above TODO may be void because of RVO
+//TODO: compiler is optimizing out some benchmarks because they have no side effects -- maybe write vec data to file?
