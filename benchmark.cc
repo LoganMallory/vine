@@ -15,6 +15,7 @@ const unsigned int ITERATIONS = 1000;
 #include "benchmarks/greaterthan.cc"
 #include "benchmarks/lessthan.cc"
 #include "benchmarks/addition.cc"
+#include "benchmarks/subtraction.cc"
 
 void benchmark(double (*func)()) {
   for(int i=0; i < 3; i++) {
@@ -108,6 +109,19 @@ int main() {
 
   printf("Vine += Vine\n");
   benchmark(benchmark_add_vine_inplace);
+
+  //subtraction
+  printf("Vine - constant\n");
+  benchmark(benchmark_subtract_constant);
+
+  printf("Vine - Vine\n");
+  benchmark(benchmark_subtract_vine);
+
+  printf("Vine -= constant\n");
+  benchmark(benchmark_subtract_constant_inplace);
+
+  printf("Vine -= Vine\n");
+  benchmark(benchmark_subtract_vine_inplace);
   return 0;
 }
 
