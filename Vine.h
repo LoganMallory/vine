@@ -15,6 +15,8 @@ TODO:
   -- ++   operator
 
 */
+template<typename dtype>
+class Vine;
 
 template<typename dtype>
 class RefArray {
@@ -22,9 +24,13 @@ public:
   unsigned int length;
   dtype** refs;
 
+  RefArray();
+  RefArray(const unsigned int n);
+  ~RefArray();
+  
   void operator= (const dtype v);
   void operator= (const Vine<dtype>& vec);
-}
+};
 
 template<typename dtype>
 class Vine {
@@ -49,10 +55,8 @@ public:
     //indexers
   dtype operator[] (const unsigned int i) const; //getting
   dtype& operator[] (const unsigned int i);      //setting
-  Vine<dtype> operator[] (const Vine<unsigned int>& indexes) const; //getting
-  Vine<dtype> operator[] (const Vine<unsigned int>& indexes);       //setting
-  Vine<dtype> operator[] (const Vine<bool>& indexes) const;         //getting
-  Vine<dtype> operator[] (const Vine<bool>& indexes);               //setting
+  RefArray<dtype> operator[] (const Vine<unsigned int>& indexes) const;
+  RefArray<dtype> operator[] (const Vine<bool>& indexes) const;
 
     //comparisons
   Vine<bool> operator== (const dtype v) const;

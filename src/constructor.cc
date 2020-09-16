@@ -10,7 +10,7 @@ Vine<dtype>::Vine(){
     NOT: Vine<dtype> vec();                //interpreted as function declaration by compiler
 
   */
-  if(DEBUG) printf("Vine()\n");
+  if(DEBUG) printf("Vine::Vine()\n");
   this->values = NULL;
   this->length = 0;
 }
@@ -22,7 +22,7 @@ Vine<dtype>::Vine(const unsigned int n) {
   Called using:
     Vine<dtype> vec(n);
   */
-  if(DEBUG) printf("Vine(const unsigned int n)\n");
+  if(DEBUG) printf("Vine::Vine(const unsigned int n)\n");
   try {
   this->values = new dtype[n]();
   } catch (std::bad_alloc&) {
@@ -39,7 +39,7 @@ Vine<dtype>::Vine(const dtype v, const unsigned int n) : Vine<dtype>::Vine(n) {
   Called using:
     Vine<dtype> vec(v, n);
   */
-  if(DEBUG) printf("Vine(const dtype v, const unsigned int n)\n");
+  if(DEBUG) printf("Vine::Vine(const dtype v, const unsigned int n)\n");
   dtype* this_vals_ptr = this->values;
   dtype* max_ptr       = this->values + n;
   while(this_vals_ptr < max_ptr) *this_vals_ptr++ = v;
@@ -54,6 +54,6 @@ Vine<dtype>::Vine(const Vine<dtype>& vec) : Vine<dtype>::Vine(vec.length) {
     Vine<dtype> vec2 = vec1;
     Vine<dtype> vec2 = vec1 + v; etc.
   */
-  if(DEBUG) printf("Vine(const Vine<dtype>& vec)\n");
+  if(DEBUG) printf("Vine::Vine(const Vine<dtype>& vec)\n");
   memcpy(this->values, vec.values, vec.length*sizeof(dtype));
 }

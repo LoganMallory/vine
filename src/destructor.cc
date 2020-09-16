@@ -7,7 +7,7 @@ Vine<dtype>::~Vine(){
     Vine->~Vine();
     Automatically when a Vine object goes out of scope
   */
-  if(DEBUG) printf("~Vine()\n");
+  if(DEBUG) printf("Vine::~Vine()\n");
   delete[] this->values;
   this->length = 0;
   this->values = NULL;

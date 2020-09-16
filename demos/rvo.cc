@@ -1,6 +1,6 @@
 const int DEBUG   = 1;
 const int OPT_LVL = 0;
-#include "Vine.h"
+#include "../Vine.h"
 
 //this program shows how the copy constructor is not called, which means the compiler is using RVO
 int main() {
@@ -21,4 +21,6 @@ TODO:
   How can this be addressed?
 
 TODO: make Vine(unsigned int/int) explicit so that Vine<int> vec = 5 is a compiler error
+
+TODO: list initializer (https://stackoverflow.com/questions/26391745/custom-array-class-constructor-for-initialization-of-list)
 */

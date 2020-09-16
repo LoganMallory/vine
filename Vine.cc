@@ -5,6 +5,7 @@ template<> const char* Vine<unsigned long>::read_fmt = "%lu,";
 template<> const char* Vine<float>::read_fmt         = "%f,";
 template<> const char* Vine<double>::read_fmt        = "%lf,";
 
+template<> const char* Vine<bool>::print_fmt          = "%-4d";
 template<> const char* Vine<int>::print_fmt           = "%-4d";
 template<> const char* Vine<unsigned int>::print_fmt  = "%-4u";
 template<> const char* Vine<long>::print_fmt          = "%-4ld";
@@ -13,6 +14,7 @@ template<> const char* Vine<float>::print_fmt         = "%-6.2f";
 template<> const char* Vine<double>::print_fmt        = "%-6.2lf";
 
 #include "src/constructor.cc"
+#include "src/refarray.cc"
 #include "src/destructor.cc"
 #include "src/assignment.cc"
 #include "src/indexing.cc"
