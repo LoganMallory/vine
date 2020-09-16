@@ -8,6 +8,7 @@ const int MAX = 10000000;
 const unsigned int SIZE       = 500000;
 const unsigned int ITERATIONS = 1000;
 #include "benchmarks/constructor.cc"
+#include "benchmarks/destructor.cc"
 #include "benchmarks/assignment.cc"
 #include "benchmarks/indexing.cc"
 #include "benchmarks/equality.cc"
@@ -37,6 +38,10 @@ int main() {
 
   printf("Vine(vine)\n");
   benchmark(benchmark_vine_copy_constructor);
+
+  //destructor
+  printf("~Vine()\n");
+  benchmark(benchmark_destructor);
 
   //assignment
   printf("Vine = constant\n");
