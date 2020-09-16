@@ -63,15 +63,15 @@ void RefArray<dtype>::operator= (const Vine<dtype>& vec) {
 
   switch (OPT_LVL) {
     case 0:
-      //360mic -O3
+      //
       for(unsigned int i=0; i < this->length; i++) **(this->refs[i]) = vec.values[i];
       break;
     case 1:
-      //75mic -O3
+      //
       //memcpy(this->values, vec.values, this->length*sizeof(dtype));
       break;
     case 2:
-      //85mic -O3
+      //
       dtype** max_ptr       = this->refs + this->length;
       dtype** this_refs_ptr = this->refs;
       dtype* vec_vals_ptr  = vec.values;
