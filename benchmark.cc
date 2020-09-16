@@ -7,6 +7,7 @@ const int MIN = -10000000;
 const int MAX = 10000000;
 const unsigned int SIZE       = 500000;
 const unsigned int ITERATIONS = 1000;
+#include "benchmarks/constructor.cc"
 #include "benchmarks/assignment.cc"
 #include "benchmarks/indexing.cc"
 #include "benchmarks/equality.cc"
@@ -23,6 +24,19 @@ void benchmark(double (*func)()) {
 
 int main() {
   srand(time(NULL));
+
+  //constructor
+  printf("Vine()\n");
+  benchmark(benchmark_default_constructor);
+
+  printf("Vine(size)\n");
+  benchmark(benchmark_size_constructor);
+
+  printf("Vine(value, size)\n");
+  benchmark(benchmark_value_size_constructor);
+
+  printf("Vine(vine)\n");
+  benchmark(benchmark_vine_copy_constructor);
 
   //assignment
   printf("Vine = constant\n");
