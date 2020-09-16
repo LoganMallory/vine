@@ -4,12 +4,12 @@
 #include <string>
 /*
 TODO:
-  % %=    operator
+  % %=    operator slow
   ^ ^=    operator
   & &= && operator (&& loses short circuit eval when overloaded, prob shouldn't implement)
   | |= || operator (|| loses short circuit eval when overloaded, prob shouldn't implement)
-  ~       operator
-  !       operator
+  ~       operator don't do this one
+  !       operator only for boolean Vines
   >> >>=  operator
   << <<=  operator
   -- ++   operator
@@ -27,7 +27,7 @@ public:
   RefArray();
   RefArray(const unsigned int n);
   ~RefArray();
-  
+
   void operator= (const dtype v);
   void operator= (const Vine<dtype>& vec);
 };
@@ -52,6 +52,8 @@ public:
     //assignment
   void operator= (const dtype v);
   void operator= (const Vine<dtype>& vec);
+  //void operator= (const RefArray<dtype>& refarr); //deep copy
+
     //indexers
   dtype operator[] (const unsigned int i) const; //getting
   dtype& operator[] (const unsigned int i);      //setting
@@ -61,21 +63,33 @@ public:
     //comparisons
   Vine<bool> operator== (const dtype v) const;
   Vine<bool> operator== (const Vine<dtype>& vec) const;
+  Vine<unsigned int> operator== (const dtype v) const;
+  Vine<unsigned int> operator== (const Vine<dtype>& vec) const;
 
   Vine<bool> operator!= (const dtype v) const;
   Vine<bool> operator!= (const Vine<dtype>& vec) const;
+  Vine<unsigned int> operator!= (const dtype v) const;
+  Vine<unsigned int> operator!= (const Vine<dtype>& vec) const;
 
   Vine<bool> operator> (const dtype v) const;
   Vine<bool> operator> (const Vine<dtype>& vec) const;
+  Vine<unsigned int> operator> (const dtype v) const;
+  Vine<unsigned int> operator> (const Vine<dtype>& vec) const;
 
   Vine<bool> operator>= (const dtype v) const;
   Vine<bool> operator>= (const Vine<dtype>& vec) const;
+  Vine<unsigned int> operator>= (const dtype v) const;
+  Vine<unsigned int> operator>= (const Vine<dtype>& vec) const;
 
   Vine<bool> operator< (const dtype v) const;
   Vine<bool> operator< (const Vine<dtype>& vec) const;
+  Vine<unsigned int> operator< (const dtype v) const;
+  Vine<unsigned int> operator< (const Vine<dtype>& vec) const;
 
   Vine<bool> operator<= (const dtype v) const;
   Vine<bool> operator<= (const Vine<dtype>& vec) const;
+  Vine<unsigned int> operator<= (const dtype v) const;
+  Vine<unsigned int> operator<= (const Vine<dtype>& vec) const;
 
     //addition
   Vine<dtype> operator+ (const dtype v) const;
