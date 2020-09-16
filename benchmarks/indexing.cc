@@ -11,12 +11,11 @@ double benchmark_index_get() {
 
     //start benchmark
     std::chrono::time_point< std::chrono::system_clock > start = std::chrono::system_clock::now();
-    for(int j=0; j < 1000; j++) {
-      //choose random constant
-      int k = rand() % SIZE;
-      //do work
-      v = vec1[k];
-    }
+    //choose random constant
+    int k = rand() % SIZE;
+
+    //do work
+    v = vec1[k];
 
     //end benchmark
     std::chrono::time_point< std::chrono::system_clock > end = std::chrono::system_clock::now();
@@ -41,16 +40,15 @@ double benchmark_index_set() {
     //initialize array to randomness
     for(unsigned int i=0; i < SIZE; i++) vec1[i] = MIN + (rand() % static_cast<int>(MAX - MIN + 1));
 
+    //choose random constant
+    int k = rand() % SIZE;
+    int v = MIN + (rand() % static_cast<int>(MAX - MIN + 1));
+
     //start benchmark
     std::chrono::time_point< std::chrono::system_clock > start = std::chrono::system_clock::now();
 
-    for(int j=0; j < 1000; j++) {
-      //choose random constant
-      int k = rand() % SIZE;
-      int v = MIN + (rand() % static_cast<int>(MAX - MIN + 1));
-      //do work
-      vec1[k] = v;
-    }
+    //do work
+    vec1[k] = v;
 
     //end benchmark
     std::chrono::time_point< std::chrono::system_clock > end = std::chrono::system_clock::now();
