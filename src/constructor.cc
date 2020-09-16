@@ -52,6 +52,7 @@ Vine<dtype>::Vine(const Vine<dtype>& vec) : Vine<dtype>::Vine(vec.length) {
   Called using:
     Vine<dtype> vec2(vec1);
     Vine<dtype> vec2 = vec1;
+    Vine<dtype> vec2 = vec1 + v; etc.
   */
   if(DEBUG) printf("Vine(const Vine<dtype>& vec)\n");
   memcpy(this->values, vec.values, vec.length*sizeof(dtype));

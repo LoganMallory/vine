@@ -24,7 +24,7 @@ void Vine<dtype>::operator= (const dtype v) {
   }
 }
 template<typename dtype>
-Vine<dtype>& Vine<dtype>::operator= (const Vine<dtype>& vec) {
+void Vine<dtype>::operator= (const Vine<dtype>& vec) {
   /*
   Copy all values of vec.values into this->values, resizing this->values if necessary
   Called using:
@@ -32,12 +32,8 @@ Vine<dtype>& Vine<dtype>::operator= (const Vine<dtype>& vec) {
     NOT: Vine<int> vec2 = vec1; (conversion constructor called instead)
   */
   if(DEBUG) printf("Vine::operator= (const Vine<dtype>& vec)\n");
-  //lengths don't match, so reallocate memory to match (values will be copied over by switch statement logic)
-  if(this->length != vec.length){
-    if(DEBUG) printf("\tResizing :this: to match vec\n");
-    this->values = static_cast<dtype*>(realloc(this->values, sizeof(dtype)*vec.length));
-    this->length = vec.length;
-  }
+  if(this->length != vec.length) if(DEBUG) printf("\tERROR: can not assign vines of mismatched length (%u vs. %u)\n", this->length, vec.length);
+
   switch (OPT_LVL) {
     case 0:
       //360mic -O3
@@ -55,5 +51,4 @@ Vine<dtype>& Vine<dtype>::operator= (const Vine<dtype>& vec) {
       while(this_vals_ptr < max_ptr) *this_vals_ptr++ = *vec_vals_ptr++;
       break;
   }
-  return *this;
 }
