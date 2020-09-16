@@ -40,17 +40,13 @@ RefArray<dtype> Vine<dtype>::operator[] (const Vine<bool>& indexes) const {
   dtype* this_vals_ptr = this->values;
   bool* indexes_ptr    = indexes.values;
   dtype* max_ptr       = this->values + this->length;
-  int i = 0;
   while(this_vals_ptr < max_ptr) {
     if(*indexes_ptr++) {
-      printf("\t%d: true\n", i);
       *refs_ptr++ = this_vals_ptr;
     } else {
-      printf("\t%d: false\n", i);
       refarr.length--;
     }
     this_vals_ptr++;
-    i++;
   }
   return refarr;
 }
