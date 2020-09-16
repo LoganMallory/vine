@@ -22,18 +22,11 @@ void assignment_to_vine_test(unsigned int size) {
   //change value just for fun
   vec2 = -509;
 
+  //check that vec2 values were changed
+  for(unsigned int i=0; i < vec2.length; i++) assert(vec2.values[i] == -509);
+
   //just double check that vec1 and vec2 don't share memory
   for(unsigned int i=0; i < vec2.length; i++) assert(vec1.values[i] == 3);
-
-  //check resizing case
-  Vine<int> vec3(size / 2);
-  vec3 = vec2;
-  //check that deepy copy occurred
-  assert(vec3.values != vec2.values);
-  //check that vec3.values was resized correctly
-  assert(vec3.length == size);
-  //check that values were copied
-  for(unsigned int i=0; i < vec2.length; i++) assert(vec2.values[i] == -509);
 }
 
 void test_assignment(unsigned int size) {

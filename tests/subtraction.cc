@@ -48,7 +48,7 @@ void subtract_vine_inplace_test(unsigned int size) {
   vec2 -= vec1 - 17 - vec2;
   for(unsigned int i=0; i < vec1.length; i++){
     assert(vec1[i] == -47);
-    assert(vec2[i] == -64);
+    assert(vec2[i] == 86);
   }
 }
 

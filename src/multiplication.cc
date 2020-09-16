@@ -47,7 +47,7 @@ Vine<dtype> Vine<dtype>::operator* (const Vine<dtype>& vec) const {
       while(this_vals_ptr < max_ptr) *new_vals_ptr++ = *this_vals_ptr++ * *vec_vals_ptr++;
       break;
   }
-  return *newvec;
+  return newvec;
 }
 template<typename dtype>
 void Vine<dtype>::operator*= (const dtype v) {

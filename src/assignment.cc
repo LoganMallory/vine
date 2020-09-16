@@ -29,7 +29,7 @@ void Vine<dtype>::operator= (const Vine<dtype>& vec) {
   Copy all values of vec.values into this->values, resizing this->values if necessary
   Called using:
     vec2 = vec1;
-    NOT: Vine<int> vec2 = vec1; (conversion constructor called instead)
+    NOT: Vine<int> vec2 = vec1; (copy constructor called instead)
   */
   if(DEBUG) printf("Vine::operator= (const Vine<dtype>& vec)\n");
   if(this->length != vec.length) if(DEBUG) printf("\tERROR: can not assign vines of mismatched length (%u vs. %u)\n", this->length, vec.length);
