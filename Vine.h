@@ -38,10 +38,10 @@ public:
     //indexers
   dtype operator[] (const unsigned int i) const; //getting
   dtype& operator[] (const unsigned int i);      //setting
-  Vine<dtype>& operator[] (const Vine<unsigned int>& indexes) const; //getting
-  Vine<dtype>& operator[] (const Vine<unsigned int>& indexes);       //setting
-  Vine<dtype>& operator[] (const Vine<bool>& indexes) const;         //getting
-  Vine<dtype>& operator[] (const Vine<bool>& indexes);               //setting
+  Vine<dtype> operator[] (const Vine<unsigned int>& indexes) const; //getting
+  Vine<dtype> operator[] (const Vine<unsigned int>& indexes);       //setting
+  Vine<dtype> operator[] (const Vine<bool>& indexes) const;         //getting
+  Vine<dtype> operator[] (const Vine<bool>& indexes);               //setting
 
     //comparisons
   Vine<bool> operator== (const dtype v) const;
