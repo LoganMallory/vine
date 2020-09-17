@@ -57,3 +57,17 @@ Vine<dtype>::Vine(const Vine<dtype>& vec) : Vine<dtype>::Vine(vec.length) {
   if(DEBUG) printf("Vine::Vine(const Vine<dtype>& vec)\n");
   memcpy(this->values, vec.values, vec.length*sizeof(dtype));
 }
+
+template<typename dtype>
+Vine<dtype>::Vine(const RefArray<dtype>& refarr) : Vine<dtype>::Vine(refarr.length) {
+  /*
+  Construct a Vine with length and values equal to refarr (deep copy though, no memory is shared)
+  Called using:
+    Vine<dtype> vec3 = vec2[some_index_vec];
+  */
+  if(DEBUG) printf("Vine::Vine(const RefArray<dtype>& refarr)\n");
+  dtype** max_ptr      = refarr.refs + refarr.length;
+  dtype** refs_ptr     = refarr.refs;
+  dtype* this_vals_ptr = this->values;
+  while(refs_ptr < max_ptr) *this_vals_ptr++ = **refs_ptr++;
+}
