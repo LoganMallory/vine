@@ -63,33 +63,21 @@ public:
     //comparisons
   Vine<bool> operator== (const dtype v) const;
   Vine<bool> operator== (const Vine<dtype>& vec) const;
-  Vine<unsigned int> operator== (const dtype v) const;
-  Vine<unsigned int> operator== (const Vine<dtype>& vec) const;
 
   Vine<bool> operator!= (const dtype v) const;
   Vine<bool> operator!= (const Vine<dtype>& vec) const;
-  Vine<unsigned int> operator!= (const dtype v) const;
-  Vine<unsigned int> operator!= (const Vine<dtype>& vec) const;
 
   Vine<bool> operator> (const dtype v) const;
   Vine<bool> operator> (const Vine<dtype>& vec) const;
-  Vine<unsigned int> operator> (const dtype v) const;
-  Vine<unsigned int> operator> (const Vine<dtype>& vec) const;
 
   Vine<bool> operator>= (const dtype v) const;
   Vine<bool> operator>= (const Vine<dtype>& vec) const;
-  Vine<unsigned int> operator>= (const dtype v) const;
-  Vine<unsigned int> operator>= (const Vine<dtype>& vec) const;
 
   Vine<bool> operator< (const dtype v) const;
   Vine<bool> operator< (const Vine<dtype>& vec) const;
-  Vine<unsigned int> operator< (const dtype v) const;
-  Vine<unsigned int> operator< (const Vine<dtype>& vec) const;
 
   Vine<bool> operator<= (const dtype v) const;
   Vine<bool> operator<= (const Vine<dtype>& vec) const;
-  Vine<unsigned int> operator<= (const dtype v) const;
-  Vine<unsigned int> operator<= (const Vine<dtype>& vec) const;
 
     //addition
   Vine<dtype> operator+ (const dtype v) const;
