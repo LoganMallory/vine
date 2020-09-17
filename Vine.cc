@@ -14,17 +14,17 @@ template<> const char* Vine<float>::print_fmt         = "%-6.2f";
 template<> const char* Vine<double>::print_fmt        = "%-6.2lf";
 
 #include "src/constructor.cc"
-#include "src/refarray.cc"
 #include "src/destructor.cc"
-#include "src/assignment.cc"
-#include "src/indexing.cc"
-#include "src/equality.cc"
-#include "src/greaterthan.cc"
-#include "src/lessthan.cc"
-#include "src/addition.cc"
-#include "src/subtraction.cc"
-#include "src/multiplication.cc"
-#include "src/division.cc"
+#include "src/refarray.cc"
+#include "src/operators/assignment.cc"
+#include "src/operators/indexing.cc"
+#include "src/operators/equality.cc"
+#include "src/operators/greaterthan.cc"
+#include "src/operators/lessthan.cc"
+#include "src/operators/addition.cc"
+#include "src/operators/subtraction.cc"
+#include "src/operators/multiplication.cc"
+#include "src/operators/division.cc"
 
 
 
