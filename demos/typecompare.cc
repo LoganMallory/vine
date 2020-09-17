@@ -7,10 +7,13 @@ int main() {
   Vine<int> vec1(5, 10);
   vec1.print();
 
+  float i = 1.9;
+
   Vine<unsigned int> vec2(5, 10);
   vec2.print();
 
   Vine<bool> vec3 = vec1 == vec2; //error: invalid operands to binary expression ('Vine<int>' and 'Vine<unsigned int>')
   vec3.print();
+  
   return 0;
 }
