@@ -43,7 +43,7 @@ public:
   dtype* values;
 
   Vine();
-  Vine(const unsigned int n);
+  explicit Vine(const unsigned int n);
   Vine(const dtype v, const unsigned int n);
   Vine(const Vine<dtype>& vec);
   //Vine(const RefArray<dtype>& vec);
