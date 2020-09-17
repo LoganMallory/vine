@@ -5,9 +5,12 @@ Vine<bool> Vine<dtype>::operator< (const dtype v) const {
   Called using:
     vec1 < v;
   */
-  if(DEBUG) printf("Vine::operator< (const dtype v)\n");
-  Vine<bool> newvec(this->length);
-  for(unsigned int i=0; i < this->length; i++) newvec.values[i] = (this->values[i] - v) >> 31;
+  if(DEBUG) printf("Vine::operator> (const dtype v)\n");
+  Vine<bool> newvec = (this->length);
+  dtype* this_vals_ptr = this->values;
+  bool* new_vals_ptr   = newvec.values;
+  dtype* max_ptr       = this->values + this->length;
+  while(this_vals_ptr < max_ptr) *new_vals_ptr++ = ((*this_vals_ptr++ - v) >> 31) & 1;
   return newvec;
 }
 
@@ -18,11 +21,16 @@ Vine<bool> Vine<dtype>::operator< (const Vine<dtype>& vec) const {
   Called using:
     vec1 < vec2;
   */
-  if(DEBUG) printf("Vine::operator< (const Vine<dtype>& vec)\n");
+  if(DEBUG) printf("Vine::operator> (const Vine<dtype>& vec)\n");
   Vine<bool> newvec(this->length);
-  for(unsigned int i=0; i < this->length; i++) newvec.values[i] = (this->values[i] - vec.values[i]) >> 31;
+  dtype* this_vals_ptr = this->values;
+  dtype* vec_vals_ptr  = vec.values;
+  bool* new_vals_ptr   = newvec.values;
+  dtype* max_ptr       = this->values + this->length;
+  while(this_vals_ptr < max_ptr) *new_vals_ptr++ = ((*this_vals_ptr++ - *vec_vals_ptr++) >> 31) & 1;
   return newvec;
 }
+
 
 template<typename dtype>
 Vine<bool> Vine<dtype>::operator<= (const dtype v) const {
@@ -33,7 +41,10 @@ Vine<bool> Vine<dtype>::operator<= (const dtype v) const {
   */
   if(DEBUG) printf("Vine::operator<= (const dtype v)\n");
   Vine<bool> newvec(this->length);
-  for(unsigned int i=0; i < this->length; i++) newvec.values[i] = ((v - this->values[i]) >> 31) ^ 1;
+  dtype* this_vals_ptr = this->values;
+  bool* new_vals_ptr   = newvec.values;
+  dtype* max_ptr       = this->values + this->length;
+  while(this_vals_ptr < max_ptr) *new_vals_ptr++ = (((v - *this_vals_ptr++) >> 31) & 1) ^ 1;
   return newvec;
 }
 
@@ -44,8 +55,12 @@ Vine<bool> Vine<dtype>::operator<= (const Vine<dtype>& vec) const {
   Called using:
     vec1 <= vec2;
   */
-  if(DEBUG) printf("Vine::operator<= (const Vine<dtype>& vec)\n");
+  if(DEBUG) printf("Vine::operator>= (const Vine<dtype>& vec\n");
   Vine<bool> newvec(this->length);
-  for(unsigned int i=0; i < this->length; i++) newvec.values[i] = ((vec.values[i] - this->values[i]) >> 31) ^ 1;
+  dtype* this_vals_ptr = this->values;
+  dtype* vec_vals_ptr  = vec.values;
+  bool* new_vals_ptr   = newvec.values;
+  dtype* max_ptr       = this->values + this->length;
+  while(this_vals_ptr < max_ptr) *new_vals_ptr++ = (((*vec_vals_ptr++ - *this_vals_ptr++) >> 31) & 1) ^ 1;
   return newvec;
 }

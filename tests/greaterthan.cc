@@ -36,6 +36,7 @@ void greater_than_equal_to_constant_test(unsigned int size) {
   //check for false
   Vine<int> vec1(189, size);
   Vine<bool> vec2 = vec1 >= 9201;
+
   for(unsigned int i=0; i < vec2.length; i++) assert(vec2[i] == false);
   //check in case of equal values (true)
   vec1 = -82;
