@@ -46,7 +46,6 @@ void RefArray<dtype>::operator= (const Vine<dtype>& vec) {
     vec2[vec1] = v; where vec1 is a boolean or int array
   */
   if(DEBUG) printf("RefArray::operator= (const Vine<dtype>& vec)\n");
-  if(this->length != vec.length) if(DEBUG) printf("\tERROR: can not assign vine to ref array of mismatched length (%u vs. %u)\n", this->length, vec.length);
   dtype** max_ptr       = this->refs + this->length;
   dtype** this_refs_ptr = this->refs;
   dtype* vec_vals_ptr   = vec.values;
