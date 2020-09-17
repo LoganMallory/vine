@@ -17,6 +17,5 @@ int main() {
   unsigned long d = 2;
   printf("vec1[%lu] = %d\n", d, vec1[d]);
 
-
   return 0;
 }
