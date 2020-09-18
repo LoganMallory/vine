@@ -25,55 +25,6 @@ template<> const char* Vine<double>::print_fmt        = "%-6.2lf";
 #include "src/operators/subtraction.cc"
 #include "src/operators/multiplication.cc"
 #include "src/operators/division.cc"
-
-
-
-
-
-//exponentiation TODO: make this XOR (>> will be exponentiation, << will be log (maybe))
-/*
-template<typename dtype>
-Vine<dtype>& Vine<dtype>::operator^ (const dtype v) const {
-  if(DEBUG) printf("Vine::operator^ (const dtype v)\n");
-  Vine<dtype> newvec(this->length);
-  for(unsigned int i=0; i < this->length; i++){
-    newvec.values[i] = this->values[i];
-    for(unsigned int j=0; j < v-1; j++) newvec.values[i] *= this->values[i];
-  }
-  return newvec;
-}
-template<typename dtype>
-Vine<dtype>& Vine<dtype>::operator^ (const Vine<dtype>& vec) const {
-  if(DEBUG) printf("Vine::operator^ (const Vine<dtype>& vec)\n");
-  Vine<dtype> newvec(this->length);
-  for(unsigned int i=0; i < this->length; i++){
-    newvec.values[i] = this->values[i];
-    for(unsigned int j=0; j<vec.values[i]-1; j++) newvec.values[i] *= this->values[i];
-  }
-  return newvec;
-}
-template<typename dtype>
-void Vine<dtype>::operator^= (const dtype v) {
-  if(DEBUG) printf("Vine::operator^= (const dtype v)\n");
-  for(unsigned int i=0; i < this->length; i++){
-    dtype base = this->values[i];
-    for(unsigned int j=0; j < v-1; j++) this->values[i] *= base;
-  }
-}
-template<typename dtype>
-void Vine<dtype>::operator^= (const Vine<dtype>& vec) {
-  if(DEBUG) printf("Vine::operator^= (const Vine<dtype>& vec)\n");
-  for(unsigned int i=0; i<this->length; i++){
-    dtype base = this->values[i];
-    for(unsigned int j=0; j < vec.values[i]-1; j++) this->values[i] *= base;
-  }
-}
-*/
-
-//methods
-template<typename dtype>
-void Vine<dtype>::print() {
-  printf("[ ");
-  for(unsigned int i=0; i < this->length; i++) printf(print_fmt, this->values[i]);
-  printf("]\n");
-}
+#include "src/methods/display.cc"
+#include "src/methods/exponentiation.cc"
+#include "src/methods/intlogs.cc"

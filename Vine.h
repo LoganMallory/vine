@@ -102,14 +102,20 @@ public:
   Vine<dtype> operator/ (const Vine<dtype>& vec) const;
   void operator/= (const dtype v);
   void operator/= (const Vine<dtype>& vec);
-    //xor
-  Vine<dtype> operator^ (const dtype v) const;
-  Vine<dtype> operator^ (const Vine<dtype>& vec) const;
-  void operator^= (const dtype v);
-  void operator^= (const Vine<dtype>& vec);
-
 
   //methods
+    //exponentiation
+  Vine<dtype> pow(const unsigned int p) const;
+  void pow(const unsigned int p, bool inplace) const;
+  Vine<dtype> pow(const Vine<unsigned int>& vec) const;
+  void pow(const Vine<unsigned int>& vec, bool inplace) const;
+    //int logs
+  Vine<dtype> intlog2() const;
+  void intlog2(bool inplace) const;
+  Vine<dtype> intlog10() const;
+  void intlog10(bool inplace) const;
+
+    //display
   void print();
 };
 #include "Vine.cc"
