@@ -23,9 +23,11 @@ RefArray<dtype> Vine<dtype>::operator[] (const Vine<unsigned int>& indexes) cons
   */
   if(DEBUG) printf("Vine::operator[const Vine<unsigned int>& indexes]\n");
   RefArray<dtype> refarr(indexes.length);
-  for(unsigned int i=0; i < refarr.length; i++) {
-    refarr.refs[i] = this->values + indexes.values[i];
-  }
+  dtype* this_vals_ptr = this->values;
+  dtype* indexes_ptr   = indexes.values;
+  dtype** refs_ptr     = refarr.refs;
+  dtype* max_ptr       = this_vals_ptr + this->length;
+  while(this_vals_ptr < max_ptr) *refs_ptr++ = this_vals_ptr + *indexes_ptr++;
   return refarr;
 }
 

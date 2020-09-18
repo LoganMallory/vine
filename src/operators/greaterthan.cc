@@ -9,7 +9,7 @@ Vine<bool> Vine<dtype>::operator> (const dtype v) const {
   Vine<bool> newvec = (this->length);
   dtype* this_vals_ptr = this->values;
   bool* new_vals_ptr   = newvec.values;
-  dtype* max_ptr       = this->values + this->length;
+  dtype* max_ptr       = this_vals_ptr + this->length;
   while(this_vals_ptr < max_ptr) *new_vals_ptr++ = ((v - *this_vals_ptr++) >> 31) & 1;
   return newvec;
 }
@@ -26,7 +26,7 @@ Vine<bool> Vine<dtype>::operator> (const Vine<dtype>& vec) const {
   dtype* this_vals_ptr = this->values;
   dtype* vec_vals_ptr  = vec.values;
   bool* new_vals_ptr   = newvec.values;
-  dtype* max_ptr       = this->values + this->length;
+  dtype* max_ptr       = this_vals_ptr + this->length;
   while(this_vals_ptr < max_ptr) *new_vals_ptr++ = ((*vec_vals_ptr++ - *this_vals_ptr++) >> 31) & 1;
   return newvec;
 }
@@ -43,7 +43,7 @@ Vine<bool> Vine<dtype>::operator>= (const dtype v) const {
   Vine<bool> newvec(this->length);
   dtype* this_vals_ptr = this->values;
   bool* new_vals_ptr   = newvec.values;
-  dtype* max_ptr       = this->values + this->length;
+  dtype* max_ptr       = this_vals_ptr + this->length;
   while(this_vals_ptr < max_ptr) *new_vals_ptr++ = (((*this_vals_ptr++ - v) >> 31) & 1) ^ 1;
   return newvec;
 }
@@ -60,7 +60,7 @@ Vine<bool> Vine<dtype>::operator>= (const Vine<dtype>& vec) const {
   dtype* this_vals_ptr = this->values;
   dtype* vec_vals_ptr  = vec.values;
   bool* new_vals_ptr   = newvec.values;
-  dtype* max_ptr       = this->values + this->length;
+  dtype* max_ptr       = this_vals_ptr + this->length;
   while(this_vals_ptr < max_ptr) *new_vals_ptr++ = (((*this_vals_ptr++ - *vec_vals_ptr++) >> 31) & 1) ^ 1;
   return newvec;
 }

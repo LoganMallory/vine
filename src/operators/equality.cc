@@ -9,7 +9,8 @@ Vine<bool> Vine<dtype>::operator== (const dtype v) const {
   Vine<bool> newvec(this->length);
   dtype* this_vals_ptr = this->values;
   bool* new_vals_ptr   = newvec.values;
-  for(unsigned int i=0; i < this->length; i++) *new_vals_ptr++ = *this_vals_ptr++ == v;
+  dtype* const max_ptr = this_vals_ptr + this->length;
+  while(this_vals_ptr < max_ptr) *new_vals_ptr++ = *this_vals_ptr++ == v;
   return newvec;
 }
 
@@ -26,7 +27,8 @@ Vine<bool> Vine<dtype>::operator== (const Vine<dtype>& vec) const {
   dtype* this_vals_ptr = this->values;
   dtype* vec_vals_ptr  = vec.values;
   bool* new_vals_ptr   = newvec.values;
-  for(unsigned int i=0; i < this->length; i++) *new_vals_ptr++ = *this_vals_ptr++ == *vec_vals_ptr++;
+  dtype* const max_ptr = this_vals_ptr + this->length;
+  while(this_vals_ptr < max_ptr) *new_vals_ptr++ = *this_vals_ptr++ == *vec_vals_ptr++;
   return newvec;
 }
 
@@ -41,7 +43,8 @@ Vine<bool> Vine<dtype>::operator!= (const dtype v) const {
   Vine<bool> newvec(this->length);
   dtype* this_vals_ptr = this->values;
   bool* new_vals_ptr   = newvec.values;
-  for(unsigned int i=0; i < this->length; i++) *new_vals_ptr++ = *this_vals_ptr++ != v;
+  dtype* const max_ptr = this_vals_ptr + this->length;
+  while(this_vals_ptr < max_ptr) *new_vals_ptr++ = *this_vals_ptr++ != v;
   return newvec;
 }
 
@@ -58,6 +61,7 @@ Vine<bool> Vine<dtype>::operator!= (const Vine<dtype>& vec) const {
   dtype* this_vals_ptr = this->values;
   dtype* vec_vals_ptr  = vec.values;
   bool* new_vals_ptr   = newvec.values;
-  for(unsigned int i=0; i < this->length; i++) *new_vals_ptr++ = *this_vals_ptr++ != *vec_vals_ptr++;
+  dtype* const max_ptr = this_vals_ptr + this->length;
+  while(this_vals_ptr < max_ptr) *new_vals_ptr++ = *this_vals_ptr++ != *vec_vals_ptr++;
   return newvec;
 }

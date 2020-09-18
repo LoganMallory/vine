@@ -19,11 +19,11 @@ int main() {
 
   //Option 1 - pass the index vector to the [] operator
   //(which subsequently returns a RefArray, which then takes 3 as the arg to RefArray::operator= and assigns 3 to the appropiate indexes)
-  vec1[indexes_vec] = 3;
+  vec1[numeric_indexes_vec] = 3;
 
   //Option 2 - create the RefArray explicitly (bad style though - please don't do this)
-  RefArray<int> rarr = vec1[numeric_indexes_vec];
-  rarr = 3;
+  RefArray<int> rarr1 = vec1[numeric_indexes_vec];
+  rarr1 = 3;
 
   //print vec1 again to show that 3 was assigned at the correct indexes (0, 1, 3)
                   //         0   1       3
@@ -38,8 +38,8 @@ int main() {
   vec1[boolean_indexes_vec] = 9;
 
   //Option 2 - create the RefArray explicitly (bad style though - please don't do this)
-  RefArray<int> rarr = vec1[boolean_indexes_vec];
-  rarr = 9;
+  RefArray<int> rarr2 = vec1[boolean_indexes_vec];
+  rarr2 = 9;
 
   //print vec1 again to show that 9 was assigned at the correct indexes (2, 4, 5, 6, 7, 8, 9)
                 //          2       4   5   6   7   8   9

@@ -41,7 +41,7 @@ Vine<dtype>::Vine(const dtype v, const unsigned int n) : Vine<dtype>::Vine(n) {
   */
   if(DEBUG) printf("Vine::Vine(const dtype v, const unsigned int n)\n");
   dtype* this_vals_ptr = this->values;
-  dtype* max_ptr       = this->values + n;
+  dtype* const max_ptr = this->values + n;
   while(this_vals_ptr < max_ptr) *this_vals_ptr++ = v;
 }
 
@@ -66,8 +66,32 @@ Vine<dtype>::Vine(const RefArray<dtype>& refarr) : Vine<dtype>::Vine(refarr.leng
     Vine<dtype> vec3 = vec2[some_index_vec];
   */
   if(DEBUG) printf("Vine::Vine(const RefArray<dtype>& refarr)\n");
-  dtype** max_ptr      = refarr.refs + refarr.length;
-  dtype** refs_ptr     = refarr.refs;
-  dtype* this_vals_ptr = this->values;
+  dtype** const max_ptr = refarr.refs + refarr.length;
+  dtype** refs_ptr      = refarr.refs;
+  dtype* this_vals_ptr  = this->values;
   while(refs_ptr < max_ptr) *this_vals_ptr++ = **refs_ptr++;
 }
+
+template<typename dtype>
+Vine<dtype>::Vine(std::initializer_list<dtype> values_list) : Vine<dtype>::Vine(values_list.size()) {
+  /*
+  Construct a Vine with length and values equal to the initializer list
+  Called using:
+    Vine<dtype> vec3 = {4, -5, 901}; etc.
+  */
+  dtype* this_vals_ptr       = this->values;
+  const dtype* list_vals_ptr = values_list.begin();
+  const dtype* const max_ptr = list_vals_ptr + values_list.size();
+  while(list_vals_ptr < max_ptr) *this_vals_ptr++ = *list_vals_ptr++;
+}
+
+/*
+array<T>::array(std::initializer_list<T> il)
+{
+    unsigned long size = il.size();
+    head = new T[size];
+    iterator pointer = begin();
+    for (const T& i : il)
+        *pointer++ = i;
+}
+*/

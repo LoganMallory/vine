@@ -7,7 +7,7 @@ void Vine<dtype>::operator= (const dtype v) {
   */
   if(DEBUG) printf("Vine::operator= (const dtype v)\n");
   dtype* this_vals_ptr = this->values;
-  dtype* max_ptr       = this->values + this->length;
+  dtype* const max_ptr = this_vals_ptr + this->length;
   while(this_vals_ptr < max_ptr) *this_vals_ptr++ = v;
 }
 template<typename dtype>
@@ -19,8 +19,8 @@ void Vine<dtype>::operator= (const Vine<dtype>& vec) {
     NOT: Vine<int> vec2 = vec1; (copy constructor called instead)
   */
   if(DEBUG) printf("Vine::operator= (const Vine<dtype>& vec)\n");
-  dtype* max_ptr       = this->values + this->length;
   dtype* this_vals_ptr = this->values;
   dtype* vec_vals_ptr  = vec.values;
+  dtype* const max_ptr = this_vals_ptr + this->length;
   while(this_vals_ptr < max_ptr) *this_vals_ptr++ = *vec_vals_ptr++;
 }

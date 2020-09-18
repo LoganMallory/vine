@@ -1,7 +1,9 @@
 #ifndef Vine_H
 #define Vine_H
 #include <stdio.h>
-#include <string>
+#include <string> //weirdly includes a bunch of things like
+#include <initializer_list>
+
 /*
 TODO:
   % %=    operator slow
@@ -22,7 +24,7 @@ template<typename dtype>
 class RefArray {
 public:
   unsigned int length;
-  dtype** refs;
+  dtype** refs;        //TODO: see if this can be made constant
 
   RefArray();
   RefArray(const unsigned int n);
@@ -47,6 +49,7 @@ public:
   Vine(const dtype v, const unsigned int n);
   Vine(const Vine<dtype>& vec);
   Vine(const RefArray<dtype>& refarr);
+  Vine(std::initializer_list<dtype> values_list);
   ~Vine();
 
   //operators

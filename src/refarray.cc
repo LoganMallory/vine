@@ -35,7 +35,7 @@ void RefArray<dtype>::operator= (const dtype v) {
   */
   if(DEBUG) printf("RefArray::operator= (const dtype v)\n");
   dtype** this_refs_ptr = this->refs;
-  dtype** max_ptr       = this->refs + this->length;
+  dtype** const max_ptr = this->refs + this->length;
   while(this_refs_ptr < max_ptr) **this_refs_ptr++ = v;
 }
 template<typename dtype>
@@ -46,7 +46,7 @@ void RefArray<dtype>::operator= (const Vine<dtype>& vec) {
     vec2[vec1] = v; where vec1 is a boolean or int array
   */
   if(DEBUG) printf("RefArray::operator= (const Vine<dtype>& vec)\n");
-  dtype** max_ptr       = this->refs + this->length;
+  dtype** const max_ptr = this->refs + this->length;
   dtype** this_refs_ptr = this->refs;
   dtype* vec_vals_ptr   = vec.values;
   while(this_refs_ptr < max_ptr) **this_refs_ptr++ = *vec_vals_ptr++;
