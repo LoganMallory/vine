@@ -7,9 +7,9 @@ RefArray<dtype>::RefArray() {
 
 template<typename dtype>
 RefArray<dtype>::RefArray(const unsigned int n) {
-  if(DEBUG) printf("RefArray::RefArray(const unsigned int n)\n");
+  if(DEBUG) printf("RefArray::RefArray(const unsigned int n = %u)\n", n);
   try {
-  this->refs = new dtype*[n];
+  this->refs = new dtype*[n]();
   } catch (std::bad_alloc&) {
     printf("\nUNABLE TO ALLOCATE MEMORY\n");
     abort();
