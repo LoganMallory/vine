@@ -24,7 +24,7 @@ template<typename dtype>
 class RefArray {
 public:
   unsigned int length;
-  dtype** refs;        //TODO: see if this can be made constant
+  dtype** refs;        //TODO: see if this can be made constant (https://stackoverflow.com/questions/1143262/what-is-the-difference-between-const-int-const-int-const-and-int-const)
 
   RefArray();
   RefArray(const unsigned int n);
