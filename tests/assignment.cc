@@ -4,7 +4,7 @@ void assignment_to_constant_test(unsigned int size) {
   Vine<int> vec1(size);
   vec1 = 7;
   for(unsigned int i=0; i < vec1.length; i++) assert(vec1.values[i] == 7);
-  //Vine<int> vec2 = 23 does not call operator= method, it calls conversion constructor
+  //Vine<int> vec2 = 23; //does not call operator= method, it calls copy constructor
 }
 
 void assignment_to_vine_test(unsigned int size) {
@@ -29,7 +29,20 @@ void assignment_to_vine_test(unsigned int size) {
   for(unsigned int i=0; i < vec2.length; i++) assert(vec1.values[i] == 3);
 }
 
+void refarray_assignment_to_vine_test(size) {
+  if(TEST_DEBUG) printf("\trefarray_assignment_to_vine_test()\n");
+  Vine<int> vec1(4, size);
+  Vine<unsigned int> indexes = {0, 2};
+  vec1[indexes] = -9401;
+  assert(vec1.length == size);
+  assert(vec1.values[0] == -9401);
+  assert(vec1.values[1] == 4);
+  assert(vec1.values[2] == -9401);
+  for(unsigned int i=3; i < vec1.length; i++) assert(vec1.values[i] == 4);
+}
+
 void test_assignment(unsigned int size) {
   assignment_to_constant_test(size);
   assignment_to_vine_test(size);
+  refarray_assignment_to_vine_test(size);
 }

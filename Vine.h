@@ -15,7 +15,6 @@ TODO:
   >> >>=  operator
   << <<=  operator
   -- ++   operator
-
 */
 template<typename dtype>
 class Vine;
@@ -48,8 +47,8 @@ public:
   explicit Vine(const unsigned int n);
   Vine(const dtype v, const unsigned int n);
   Vine(const Vine<dtype>& vec);
-  Vine(const RefArray<dtype>& refarr);
   Vine(std::initializer_list<dtype> values_list);
+  Vine(const RefArray<dtype>& refarr);
   ~Vine();
 
   //operators
