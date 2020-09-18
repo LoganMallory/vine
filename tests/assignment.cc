@@ -29,7 +29,7 @@ void assignment_to_vine_test(unsigned int size) {
   for(unsigned int i=0; i < vec2.length; i++) assert(vec1.values[i] == 3);
 }
 
-void refarray_assignment_to_vine_test(size) {
+void refarray_assignment_to_vine_test(unsigned int size) {
   if(TEST_DEBUG) printf("\trefarray_assignment_to_vine_test()\n");
   Vine<int> vec1(4, size);
   Vine<unsigned int> indexes = {0, 2};

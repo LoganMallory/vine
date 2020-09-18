@@ -9,7 +9,7 @@ void destructor_test(unsigned int size) {
 void refarray_destructor_test(unsigned int size) {
   if(TEST_DEBUG) printf("\trefarray_destructor_test()\n");
   RefArray<int> rarr(size);
-  rarr.~Vine();
+  rarr.~RefArray();
   assert(rarr.length == 0);
   assert(rarr.refs   == NULL);
 }

@@ -48,29 +48,30 @@ void copy_constructor_test(unsigned int size) {
   for(unsigned int i=0; i < vec3.length; i++) assert(vec3.values[i] == -93);
 }
 
-void from_initializer_list_test(size) {
+void from_initializer_list_test(unsigned int size) {
   if(TEST_DEBUG) printf("\tfrom_initializer_list_test()\n");
   Vine<unsigned int> vec = {0, 1, 2, 3, 4, 5};
   assert(vec.length == 6);
   assert(vec.values != NULL);
   for(unsigned int i=0; i < vec.length; i++) assert(vec.values[i] == i);
 }
-void from_refarray_constructor_test(size) {
+void from_refarray_constructor_test(unsigned int size) {
   if(TEST_DEBUG) printf("\tfrom_refarray_constructor_test()\n");
   Vine<int> vec1(9, size);
-  Vine<int> indexes = {0, size-1};
+  Vine<unsigned int> indexes = {0, 2};
   Vine<int> vec2 = vec1[indexes];
+  printf("here\n");
   assert(vec2.length == 2);
   for(unsigned int i=0; i < vec2.length; i++) assert(vec2.values[i] == 9);
 }
 
-refarray_default_constructor_test(size) {
+void refarray_default_constructor_test(unsigned int size) {
   if(TEST_DEBUG) printf("\trefarray_default_constructor_test()\n");
   RefArray<int> rarr;
   assert(rarr.length == 0);
   assert(rarr.refs   == NULL);
 }
-refarray_size_constructor_test(size) {
+void refarray_size_constructor_test(unsigned int size) {
   if(TEST_DEBUG) printf("\trefarray_size_constructor_test()\n");
   RefArray<int> rarr(size);
   assert(rarr.length == size);
