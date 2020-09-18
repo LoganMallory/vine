@@ -3,17 +3,18 @@ const int OPT_LVL    = 0;
 const int TEST_DEBUG = 1;
 #include "Vine.h"
 #include <assert.h>
-#include "tests/constructor.cc"  //done
-#include "tests/destructor.cc"   //done
-#include "tests/assignment.cc"   //done
-#include "tests/indexing.cc"     //done
-#include "tests/equality.cc"     //done
-#include "tests/greaterthan.cc"  //done
-#include "tests/lessthan.cc"     //done
-#include "tests/addition.cc"     //done
+#include "tests/constructor.cc"
+#include "tests/destructor.cc"
+#include "tests/assignment.cc"
+#include "tests/indexing.cc"
+#include "tests/equality.cc"
+#include "tests/greaterthan.cc"
+#include "tests/lessthan.cc"
+#include "tests/addition.cc"
 #include "tests/subtraction.cc"
 #include "tests/multiplication.cc"
 #include "tests/division.cc"
+#include "tests/exponentiation.cc"
 
 
 //handle overflow -- only called if compiled using -ftrapv
@@ -37,6 +38,7 @@ int main(){
   test_subtraction(size);
   test_multiplication(size);
   test_division(size);
+  test_exponentiation(size);
 
 
   return 0;

@@ -25,6 +25,6 @@ template<> const char* Vine<double>::print_fmt        = "%-6.2lf";
 #include "src/operators/subtraction.cc"
 #include "src/operators/multiplication.cc"
 #include "src/operators/division.cc"
-#include "src/methods/display.cc"
 #include "src/methods/exponentiation.cc"
 #include "src/methods/intlogs.cc"
+#include "src/methods/display.cc"
