@@ -6,7 +6,7 @@ Vine<bool> Vine<dtype>::operator< (const dtype v) const {
     vec1 < v;
   */
   if(DEBUG) printf("Vine::operator> (const dtype v)\n");
-  Vine<bool> newvec = (this->length);
+  Vine<bool> newvec(this->length);
   dtype* this_vals_ptr = this->values;
   bool* new_vals_ptr   = newvec.values;
   dtype* max_ptr       = this->values + this->length;
