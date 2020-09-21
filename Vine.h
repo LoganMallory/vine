@@ -85,23 +85,23 @@ public:
     //addition
   Vine<dtype> operator+ (const dtype v) const;
   Vine<dtype> operator+ (const Vine<dtype>& vec) const;
-  void operator+= (const dtype v);
-  void operator+= (const Vine<dtype>& vec);
+  void operator+= (const dtype v) const;
+  void operator+= (const Vine<dtype>& vec) const;
     //subtraction
   Vine<dtype> operator- (const dtype v) const;
   Vine<dtype> operator- (const Vine<dtype>& vec) const;
-  void operator-= (const dtype v);
-  void operator-= (const Vine<dtype>& vec);
+  void operator-= (const dtype v) const;
+  void operator-= (const Vine<dtype>& vec) const;
     //multiplication
   Vine<dtype> operator* (const dtype v) const;
   Vine<dtype> operator* (const Vine<dtype>& vec) const;
-  void operator*= (const dtype v);
-  void operator*= (const Vine<dtype>& vec);
+  void operator*= (const dtype v) const;
+  void operator*= (const Vine<dtype>& vec) const;
     //division
   Vine<dtype> operator/ (const dtype v) const;
   Vine<dtype> operator/ (const Vine<dtype>& vec) const;
-  void operator/= (const dtype v);
-  void operator/= (const Vine<dtype>& vec);
+  void operator/= (const dtype v) const;
+  void operator/= (const Vine<dtype>& vec) const;
 
   //methods
     //exponentiation
