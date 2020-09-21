@@ -7,6 +7,9 @@ const int MAX        =  1000000;
 #include "benchmarks/constructor.cc"
 #include "benchmarks/destructor.cc"
 #include "benchmarks/assignment.cc"
+#include "benchmarks/equality.cc"
+#include "benchmarks/greaterthan.cc"
+#include "benchmarks/lessthan.cc"
 #include "benchmarks/addition.cc"
 #include "benchmarks/subtraction.cc"
 #include "benchmarks/multiplication.cc"
@@ -26,7 +29,8 @@ void randomize_values(const Vine<int>& vec1, const Vine<int>& vec2, int& v) {
   v = random_nonzero_value();
 }
 
-double benchmark(Vine<int> (*func)(const Vine<int>&, const Vine<int>&, int&), unsigned int size) {
+template<typename dtype>
+double benchmark(Vine<dtype> (*func)(const Vine<int>&, const Vine<int>&, int&), unsigned int size) {
   //data
   Vine<int> vec1(size);
   Vine<int> vec2(size);
@@ -45,7 +49,7 @@ double benchmark(Vine<int> (*func)(const Vine<int>&, const Vine<int>&, int&), un
     std::chrono::time_point< std::chrono::system_clock > start = std::chrono::system_clock::now();
 
     //do work (avoid copying overhead by using RVO)
-    Vine<int> vec3 = func(vec1, vec2, v);
+    Vine<dtype> vec3 = func(vec1, vec2, v);
 
     //end timer
     std::chrono::time_point< std::chrono::system_clock > end = std::chrono::system_clock::now();
@@ -94,6 +98,7 @@ double benchmark(void (*func)(const Vine<int>&, const Vine<int>&, int&), unsigne
   return avg_duration;
 }
 
+
 int main() {
   unsigned int size = 500000; //5M
   printf("Constructor\n");
@@ -108,6 +113,24 @@ int main() {
   printf("Assignment\n");
   printf("\tvine = v:     %-4.2lf\n", benchmark(assignment_to_constant, size));
   printf("\tvine = vine:  %-4.2lf\n", benchmark(assignment_to_vine, size));
+
+  printf("Equality\n");
+  printf("\tvine == v:    %-4.2lf\n", benchmark(equal_to_constant, size));
+  printf("\tvine == vine: %-4.2lf\n", benchmark(equal_to_vine, size));
+  printf("\tvine != v:    %-4.2lf\n", benchmark(not_equal_to_constant, size));
+  printf("\tvine != vine: %-4.2lf\n", benchmark(not_equal_to_vine, size));
+
+  printf("Greater than\n");
+  printf("\tvine > v:     %-4.2lf\n", benchmark(greater_than_constant, size));
+  printf("\tvine > vine:  %-4.2lf\n", benchmark(greater_than_vine, size));
+  printf("\tvine >= v:    %-4.2lf\n", benchmark(greater_than_equal_to_constant, size));
+  printf("\tvine >= vine: %-4.2lf\n", benchmark(greater_than_equal_to_vine, size));
+
+  printf("Less than\n");
+  printf("\tvine < v:     %-4.2lf\n", benchmark(less_than_constant, size));
+  printf("\tvine < vine:  %-4.2lf\n", benchmark(less_than_vine, size));
+  printf("\tvine <= v:    %-4.2lf\n", benchmark(less_than_equal_to_constant, size));
+  printf("\tvine <= vine: %-4.2lf\n", benchmark(less_than_equal_to_vine, size));
 
   printf("Addition\n");
   printf("\tvine + v:     %-4.2lf\n", benchmark(add_constant, size));
