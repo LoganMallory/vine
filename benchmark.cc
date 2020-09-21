@@ -4,18 +4,26 @@ const int MIN        = -1000000;
 const int MAX        =  1000000;
 #include <chrono>
 #include "Vine.h"
+#include "benchmarks/constructor.cc"
+#include "benchmarks/destructor.cc"
+#include "benchmarks/assignment.cc"
 #include "benchmarks/addition.cc"
 #include "benchmarks/subtraction.cc"
 #include "benchmarks/multiplication.cc"
 #include "benchmarks/division.cc"
 
 
+int random_nonzero_value() {
+  int v = MIN + (rand() % (MAX - MIN + 1));
+  while(v == 0) v = MIN + (rand() % (MAX - MIN + 1));
+  return v;
+}
 void randomize_values(const Vine<int>& vec1, const Vine<int>& vec2, int& v) {
   for(unsigned int i=0; i < vec1.length; i++) {
-    vec1.values[i] = MIN + (rand() % (MAX - MIN + 1));
-    vec2.values[i] = MIN + (rand() % (MAX - MIN + 1));
+    vec1.values[i] = random_nonzero_value();
+    vec2.values[i] = random_nonzero_value();
   }
-  v = MIN + (rand() % (MAX - MIN + 1));
+  v = random_nonzero_value();
 }
 
 double benchmark(Vine<int> (*func)(const Vine<int>&, const Vine<int>&, int&), unsigned int size) {
@@ -88,25 +96,42 @@ double benchmark(void (*func)(const Vine<int>&, const Vine<int>&, int&), unsigne
 
 int main() {
   unsigned int size = 500000; //5M
-  printf("vine + v:     %-4.2lf\n", benchmark(add_constant, size));
-  printf("vine + vine:  %-4.2lf\n", benchmark(add_vine, size));
-  printf("vine += v:    %-4.2lf\n", benchmark(add_constant_inplace, size));
-  printf("vine += vine: %-4.2lf\n", benchmark(add_vine_inplace, size));
+  printf("Constructor\n");
+  printf("\tvine():       %-4.2lf\n", benchmark(default_constructor, size));
+  printf("\tvine(n):      %-4.2lf\n", benchmark(size_constructor, size));
+  printf("\tvine(v, n):   %-4.2lf\n", benchmark(value_size_constructor, size));
+  printf("\tvine(vine):   %-4.2lf\n", benchmark(copy_constructor, size));
 
-  printf("vine - v:     %-4.2lf\n", benchmark(sub_constant, size));
-  printf("vine - vine:  %-4.2lf\n", benchmark(sub_vine, size));
-  printf("vine -= v:    %-4.2lf\n", benchmark(sub_constant_inplace, size));
-  printf("vine -= vine: %-4.2lf\n", benchmark(sub_vine_inplace, size));
+  printf("Destructor\n");
+  printf("\t~vine():      %-4.2lf\n", benchmark(destructor, size));
 
-  printf("vine * v:     %-4.2lf\n", benchmark(mul_constant, size));
-  printf("vine * vine:  %-4.2lf\n", benchmark(mul_vine, size));
-  printf("vine *= v:    %-4.2lf\n", benchmark(mul_constant_inplace, size));
-  printf("vine *= vine: %-4.2lf\n", benchmark(mul_vine_inplace, size));
+  printf("Assignment\n");
+  printf("\tvine = v:     %-4.2lf\n", benchmark(assignment_to_constant, size));
+  printf("\tvine = vine:  %-4.2lf\n", benchmark(assignment_to_vine, size));
 
-  printf("vine / v:     %-4.2lf\n", benchmark(div_constant, size));
-  printf("vine / vine:  %-4.2lf\n", benchmark(div_vine, size));
-  printf("vine /= v:    %-4.2lf\n", benchmark(div_constant_inplace, size));
-  printf("vine /= vine: %-4.2lf\n", benchmark(div_vine_inplace, size));
+  printf("Addition\n");
+  printf("\tvine + v:     %-4.2lf\n", benchmark(add_constant, size));
+  printf("\tvine + vine:  %-4.2lf\n", benchmark(add_vine, size));
+  printf("\tvine += v:    %-4.2lf\n", benchmark(add_constant_inplace, size));
+  printf("\tvine += vine: %-4.2lf\n", benchmark(add_vine_inplace, size));
+
+  printf("Subtraction\n");
+  printf("\tvine - v:     %-4.2lf\n", benchmark(sub_constant, size));
+  printf("\tvine - vine:  %-4.2lf\n", benchmark(sub_vine, size));
+  printf("\tvine -= v:    %-4.2lf\n", benchmark(sub_constant_inplace, size));
+  printf("\tvine -= vine: %-4.2lf\n", benchmark(sub_vine_inplace, size));
+
+  printf("Multiplication\n");
+  printf("\tvine * v:     %-4.2lf\n", benchmark(mul_constant, size));
+  printf("\tvine * vine:  %-4.2lf\n", benchmark(mul_vine, size));
+  printf("\tvine *= v:    %-4.2lf\n", benchmark(mul_constant_inplace, size));
+  printf("\tvine *= vine: %-4.2lf\n", benchmark(mul_vine_inplace, size));
+
+  printf("Division\n");
+  printf("\tvine / v:     %-4.2lf\n", benchmark(div_constant, size));
+  printf("\tvine / vine:  %-4.2lf\n", benchmark(div_vine, size));
+  printf("\tvine /= v:    %-4.2lf\n", benchmark(div_constant_inplace, size));
+  printf("\tvine /= vine: %-4.2lf\n", benchmark(div_vine_inplace, size));
 
   return 0;
 }
