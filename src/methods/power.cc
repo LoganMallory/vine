@@ -37,7 +37,7 @@ Vine<dtype> Vine<dtype>::pow(const Vine<unsigned int>& vec) const {
   Vine<dtype> newvec(this->length);
   dtype* this_vals_ptr       = this->values;
   dtype* const max_ptr       = this_vals_ptr + this->length;
-  unsigned int* vec_vals_ptr = vec.values;
+  int* vec_vals_ptr          = vec.values;
   dtype* new_vals_ptr        = newvec.values;
   dtype u;
   dtype v;
@@ -56,7 +56,7 @@ void Vine<dtype>::pow(const Vine<unsigned int>& vec, bool inplace) const {
   if(DEBUG) printf("Vine::pow(const Vine<unsigned int>& vec, bool inplace)\n");
   dtype* this_vals_ptr       = this->values;
   dtype* const max_ptr       = this_vals_ptr + this->length;
-  unsigned int* vec_vals_ptr = vec.values;
+  int* vec_vals_ptr          = vec.values;
   dtype u;
   dtype v;
   unsigned int p;

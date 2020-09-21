@@ -104,7 +104,7 @@ public:
   void operator/= (const Vine<dtype>& vec) const;
 
   //methods
-    //exponentiation
+    //power
   Vine<dtype> pow(const unsigned int p) const;
   void pow(const unsigned int p, bool inplace) const;
   Vine<dtype> pow(const Vine<unsigned int>& vec) const;
