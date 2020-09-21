@@ -53,8 +53,8 @@ public:
 
   //operators
     //assignment
-  void operator= (const dtype v);
-  void operator= (const Vine<dtype>& vec);
+  void operator= (const dtype v) const;
+  void operator= (const Vine<dtype>& vec) const;
   //void operator= (const RefArray<dtype>& refarr); //deep copy
 
     //indexers

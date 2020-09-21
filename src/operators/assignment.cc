@@ -1,5 +1,5 @@
 template<typename dtype>
-void Vine<dtype>::operator= (const dtype v) {
+void Vine<dtype>::operator= (const dtype v) const {
   /*
   Assign a constant value to every element of this->values
   Called using:
@@ -11,7 +11,7 @@ void Vine<dtype>::operator= (const dtype v) {
   while(this_vals_ptr < max_ptr) *this_vals_ptr++ = v;
 }
 template<typename dtype>
-void Vine<dtype>::operator= (const Vine<dtype>& vec) {
+void Vine<dtype>::operator= (const Vine<dtype>& vec) const {
   /*
   Copy all values of vec.values into this->values, resizing this->values if necessary
   Called using:
