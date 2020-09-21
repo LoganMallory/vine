@@ -19,6 +19,7 @@ const unsigned int ITERATIONS = 1000;
 #include "benchmarks/multiplication.cc"
 #include "benchmarks/division.cc"
 
+
 void benchmark(double (*func)()) {
   for(int i=0; i < 3; i++) {
     OPT_LVL = i;
