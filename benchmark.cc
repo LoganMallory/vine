@@ -1,5 +1,5 @@
 const int DEBUG      = 0;
-const int ITERATIONS = 100;
+const int ITERATIONS = 1000;
 const int MIN        = -10000;
 const int MAX        =  10000;
 #include <chrono>
@@ -14,7 +14,7 @@ const int MAX        =  10000;
 #include "benchmarks/subtraction.cc"
 #include "benchmarks/multiplication.cc"
 #include "benchmarks/division.cc"
-#include "benchmarks/power.cc"
+//#include "benchmarks/power.cc"
 
 
 int random_nonzero_value() {
@@ -157,11 +157,12 @@ int main() {
   printf("\tvine /= v:    %-4.2lf\n", benchmark(div_constant_inplace, size));
   printf("\tvine /= vine: %-4.2lf\n", benchmark(div_vine_inplace, size));
 
+  /*
   printf("Power\n");
   printf("\tvine.pow(v):             %-4.2lf\n", benchmark(power_constant, size));
   printf("\tvine.pow(vine):          %-4.2lf\n", benchmark(power_vine, size));
   printf("\tvine.pow(v, inplace):    %-4.2lf\n", benchmark(power_constant_inplace, size));
   printf("\tvine.pow(vine, inplace): %-4.2lf\n", benchmark(power_vine_inplace, size));
-
+*/
   return 0;
 }
