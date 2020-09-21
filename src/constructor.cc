@@ -23,8 +23,9 @@ Vine<dtype>::Vine(const unsigned int n) {
     Vine<dtype> vec(n);
   */
   if(DEBUG) printf("Vine::Vine(const unsigned int n)\n");
-  try {
-  this->values = new dtype[n]();
+
+  try { //only 5mic slower with try/catch block
+  this->values = new dtype[n](); //140mic with (), 1.5 without
   } catch (std::bad_alloc&) {
     printf("\nUNABLE TO ALLOCATE MEMORY\n");
     abort();
@@ -84,14 +85,3 @@ Vine<dtype>::Vine(std::initializer_list<dtype> values_list) : Vine<dtype>::Vine(
   const dtype* const max_ptr = list_vals_ptr + values_list.size();
   while(list_vals_ptr < max_ptr) *this_vals_ptr++ = *list_vals_ptr++;
 }
-
-/*
-array<T>::array(std::initializer_list<T> il)
-{
-    unsigned long size = il.size();
-    head = new T[size];
-    iterator pointer = begin();
-    for (const T& i : il)
-        *pointer++ = i;
-}
-*/
