@@ -14,7 +14,7 @@ const int TEST_DEBUG = 1;
 #include "tests/subtraction.cc"
 #include "tests/multiplication.cc"
 #include "tests/division.cc"
-#include "tests/exponentiation.cc"
+#include "tests/power.cc"
 
 
 //handle overflow -- only called if compiled using -ftrapv
@@ -38,7 +38,7 @@ int main(){
   test_subtraction(size);
   test_multiplication(size);
   test_division(size);
-  test_exponentiation(size);
+  test_power(size);
 
 
   return 0;
