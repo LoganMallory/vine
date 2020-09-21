@@ -103,6 +103,12 @@ public:
   void operator/= (const dtype v) const;
   void operator/= (const Vine<dtype>& vec) const;
 
+  //division
+Vine<dtype> operator% (const dtype v) const;
+Vine<dtype> operator% (const Vine<dtype>& vec) const;
+void operator%= (const dtype v) const;
+void operator%= (const Vine<dtype>& vec) const;
+
   //methods
     //power
   Vine<dtype> pow(const unsigned int p) const;
