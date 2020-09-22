@@ -25,7 +25,7 @@ Vine<dtype>::Vine(const unsigned int n) {
   if(DEBUG) printf("Vine::Vine(const unsigned int n)\n");
 
   try { //only 5mic slower with try/catch block
-  this->values = new dtype[n]; //140mic with (), 0.5 without
+  this->values = new dtype[n](); //140mic with (), 0.5 without
   } catch (std::bad_alloc&) {
     printf("\nUNABLE TO ALLOCATE MEMORY\n");
     abort();
