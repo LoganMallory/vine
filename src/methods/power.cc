@@ -1,4 +1,4 @@
-//TODO: account for powers greater that overflow of cause long compute time
+//TODO: account for powers that overflow or cause long compute time
 //TODO: implement power by squaring
 template<typename dtype>
 Vine<dtype> Vine<dtype>::pow(const unsigned int p) const {
